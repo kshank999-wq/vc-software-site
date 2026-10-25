@@ -1,0 +1,11 @@
+{
+  "name": "vc-software-site",
+  "private": true,
+  "description": "www.vc-software.com: VC Software's company site, built from src/products.mjs.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node build.mjs && node test.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

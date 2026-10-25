@@ -1,0 +1,272 @@
+:root {
+  --bg: #0e0d0c;
+  --panel: #171513;
+  --line: #2c2824;
+  --text: #ece7df;
+  --muted: #a49c90;
+  --accent: #c9a45c;
+  --accent-strong: #e0bd73;
+  --radius: 14px;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #faf8f4;
+    --panel: #ffffff;
+    --line: #e4ddd1;
+    --text: #1d1a16;
+    --muted: #6b6359;
+    --accent: #8f6b22;
+    --accent-strong: #6f5219;
+    color-scheme: light;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.6 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent-strong);
+}
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header.site {
+  border-bottom: 1px solid var(--line);
+}
+
+header.site .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+}
+
+.brand {
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+nav.site a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 15px;
+}
+
+nav.site a:hover {
+  color: var(--text);
+}
+
+.hero {
+  padding: 72px 0 40px;
+}
+
+.hero h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(34px, 6vw, 56px);
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.lede {
+  color: var(--muted);
+  font-size: 19px;
+  max-width: 640px;
+  margin: 0;
+}
+
+.lines {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 20px;
+  padding: 24px 0 56px;
+}
+
+.line {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.line h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.line .tagline {
+  margin: 0;
+  font-weight: 600;
+}
+
+.line .about {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.addons {
+  border-top: 1px solid var(--line);
+  margin-top: 4px;
+  padding-top: 14px;
+}
+
+.addons h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.addon {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.addon strong {
+  display: block;
+}
+
+.addon span {
+  color: var(--muted);
+}
+
+.cta {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: #15120d;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--accent-strong);
+  color: #15120d;
+}
+
+.soon {
+  display: inline-block;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.band {
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 44px 0;
+}
+
+.band h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.band p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 680px;
+}
+
+.page {
+  padding: 56px 0 72px;
+  max-width: 720px;
+}
+
+.page h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  font-size: 40px;
+  margin: 0 0 8px;
+}
+
+.page h2 {
+  font-size: 20px;
+  margin: 36px 0 8px;
+}
+
+.page p,
+.page li {
+  color: var(--muted);
+}
+
+.page .updated {
+  font-size: 14px;
+}
+
+footer.site {
+  border-top: 1px solid var(--line);
+  padding: 28px 0 40px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+footer.site .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+footer.site a {
+  color: var(--muted);
+  margin-left: 16px;
+}
+
+footer.site a:first-child {
+  margin-left: 0;
+}
+
+@media (max-width: 560px) {
+  nav.site a {
+    margin-left: 14px;
+  }
+  .hero {
+    padding: 48px 0 24px;
+  }
+}
