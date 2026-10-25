@@ -49,6 +49,7 @@ for (const p of PRODUCTS) {
   if (related.related.length !== p.related.length) fail(`${p.key}: related list should have ${p.related.length} entries`);
 }
 if (home.includes('VC Publishing')) fail('VC Publishing is not a VC Software product');
+if (!home.includes('Organizing creative minds.') || !home.includes('Tools for storytellers.')) fail('the home page should carry the catchphrase and its strapline');
 
 if (failures) {
   console.error(`${failures} problem(s).`);

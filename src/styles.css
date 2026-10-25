@@ -99,6 +99,15 @@ nav.site a:hover {
   margin: 0 0 16px;
 }
 
+.strap {
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+
 .lede {
   color: var(--muted);
   font-size: 19px;

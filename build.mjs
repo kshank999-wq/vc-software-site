@@ -44,7 +44,7 @@ const page = ({ title, description, path, body }) => `<!doctype html>
 ${body}
 </main>
 <footer class="site"><div class="wrap">
-  <span>© ${year} ${esc(COMPANY.legal)}</span>
+  <span>VC Software · ${esc(COMPANY.catchphrase)} © ${year} ${esc(COMPANY.legal)}</span>
   <span><a href="/support">Support</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
 </div></footer>
 </body>
@@ -77,11 +77,12 @@ const card = (p) => `<article class="line" id="${p.key}">
 </article>`;
 
 const home = page({
-  title: 'VC Software: tools for storytellers',
+  title: `VC Software: ${COMPANY.catchphrase.replace(/\.$/, '').toLowerCase()}`,
   description: 'VC Writer, VC Film Studio and VC Game Studio: software for writers, filmmakers and game designers, from VC Entertainment.',
   path: '/',
   body: `<section class="hero wrap">
-  <h1>Tools for storytellers.</h1>
+  <h1>${esc(COMPANY.catchphrase)}</h1>
+  <p class="strap">${esc(COMPANY.strapline)}</p>
   <p class="lede">Write it, shoot it, play it. Each VC app is its own product, made for the people who tell stories for a living.</p>
 </section>
 <section class="wrap lines" id="products" aria-label="Products">

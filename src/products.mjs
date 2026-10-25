@@ -14,6 +14,9 @@
 
 export const COMPANY = {
   name: 'VC Software',
+  /** The catchphrase, and the line that goes with it. */
+  catchphrase: 'Organizing creative minds.',
+  strapline: 'Tools for storytellers.',
   /** The company behind the apps (the name on invoices and signed installers). */
   legal: 'VC Entertainment LLC',
   site: 'https://www.vc-software.com',
