@@ -9,7 +9,9 @@
  * `partOfParent` is sold on its main product's site and links there.
  *
  * VC Publishing (the book imprint) is VC Entertainment's too, but it is not
- * software: it has its own site and is not listed here.
+ * software: it has its own site and is not listed here. Neither is VC Command
+ * Center: it is the company's in-house dashboard across every site and line
+ * (software, books, clothing, sales), not a product.
  */
 
 export const COMPANY = {
