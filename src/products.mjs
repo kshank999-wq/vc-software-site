@@ -60,6 +60,14 @@ export const PRODUCTS = [
         url: 'https://vc-dit.com',
       },
       {
+        key: 'vc-vfx',
+        name: 'VC VFX',
+        about:
+          'From the DIT hand-off to the VFX house: a shot queue, a printable prep list, verified image-sequence plates and documented shot packages for your artist. Works with VC Film Studio or on its own. For Windows and macOS.',
+        /** Its own website: sold on its own as well as part of VC Film Studio. */
+        url: 'https://vc-vfx.com',
+      },
+      {
         key: 'vc-smart-slate',
         name: 'VC Smart Slate',
         about: 'A live slate linked to the production, so every take is logged as it is shot.',
