@@ -19,7 +19,7 @@ export const COMPANY = {
   strapline: 'Tools for storytellers.',
   /** The company behind the apps (the name on invoices and signed installers). */
   legal: 'VC Entertainment LLC',
-  site: 'https://www.vc-software.com',
+  site: 'https://vc-software.com',
   support: 'support@vc-software.com',
 };
 

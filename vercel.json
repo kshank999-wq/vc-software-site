@@ -5,7 +5,6 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [{ "source": "/:path*", "has": [{ "type": "host", "value": "vc-software.com" }], "destination": "https://www.vc-software.com/:path*", "permanent": true }],
   "headers": [
     {
       "source": "/(.*)",

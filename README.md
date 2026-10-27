@@ -1,6 +1,6 @@
 # vc-software-site
 
-**www.vc-software.com**: VC Software's company site. Each VC app is advertised
+**vc-software.com**: VC Software's company site. Each VC app is advertised
 and sold on its own site (vc-writer.com, vc-gamestudio.com, …); this site is
 the quiet company page above them: one card per product line with its add-ons,
 and the support, privacy and terms pages every product links to.
@@ -22,11 +22,13 @@ No dependencies: `node build.mjs` writes plain HTML into `dist/`.
 
 Vercel → Add New → Project → import this repository. `vercel.json` sets the
 build (`node build.mjs`) and the output (`dist`). Then Settings → Domains →
-add `www.vc-software.com` and `vc-software.com` (the bare domain redirects to
-www).
+add `vc-software.com` and `www.vc-software.com`, with www redirecting to the
+bare domain. The bare domain is the site's address; the redirect lives in
+Vercel's domain settings only. A second redirect in `vercel.json` pointing the
+other way once sent every page but the home page round in a loop.
 
 ## For each product's site
 
 `dist/related/<product>.json` (for example
-`https://www.vc-software.com/related/vc-game-studio.json`) lists the related
+`https://vc-software.com/related/vc-game-studio.json`) lists the related
 products that product's site shows under "More from VC Software".
