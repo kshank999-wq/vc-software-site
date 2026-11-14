@@ -271,6 +271,14 @@ footer.site a:first-child {
   margin-left: 0;
 }
 
+/* The company's second slogan, on a line of its own under the rest. */
+footer.site .slogan {
+  flex-basis: 100%;
+  margin: 8px 0 0;
+  color: var(--text);
+  font-style: italic;
+}
+
 @media (max-width: 560px) {
   nav.site a {
     margin-left: 14px;

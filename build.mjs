@@ -46,6 +46,7 @@ ${body}
 <footer class="site"><div class="wrap">
   <span>VC Software · ${esc(COMPANY.catchphrase)} © ${year} ${esc(COMPANY.legal)}</span>
   <span><a href="/support">Support</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
+  <p class="slogan">${esc(COMPANY.slogans[1])}</p>
 </div></footer>
 </body>
 </html>
