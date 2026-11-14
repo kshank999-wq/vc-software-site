@@ -5,6 +5,13 @@ and sold on its own site (vc-writer.com, vc-gamestudio.com, …); this site is
 the quiet company page above them: one card per product line with its add-ons,
 and the support, privacy and terms pages every product links to.
 
+## Focus and slogans
+
+- **Organizing creative minds.** The catchphrase; the home page leads with it.
+- **Don’t cheat yourself out of being great.**
+
+Both are kept in `COMPANY.slogans` in [`src/products.mjs`](src/products.mjs).
+
 ## Changing what it says
 
 Everything about the products is in [`src/products.mjs`](src/products.mjs):

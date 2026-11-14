@@ -16,8 +16,14 @@
 
 export const COMPANY = {
   name: 'VC Software',
-  /** The catchphrase, and the line that goes with it. */
+  /**
+   * VC Software's focus and slogans, in Ken's words. The first is the
+   * catchphrase the site leads with; the second is the company's other slogan,
+   * noted here for when a page or product site wants it.
+   */
   catchphrase: 'Organizing creative minds.',
+  slogans: ['Organizing creative minds.', 'Don’t cheat yourself out of being great.'],
+  /** The line under the catchphrase on the home page. */
   strapline: 'Tools for storytellers.',
   /** The company behind the apps (the name on invoices and signed installers). */
   legal: 'VC Entertainment LLC',
