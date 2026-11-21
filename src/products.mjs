@@ -74,9 +74,9 @@ export const PRODUCTS = [
     name: 'VC Composer',
     url: 'https://vc-composer.com',
     logo: 'vc-composer.webp',
-    tagline: 'A notation-first scoring workstation.',
+    tagline: 'The notation-first DAW.',
     about:
-      'For film, TV and game composers: write on staves, hear your libraries, mix, score to picture and deliver. For Windows and macOS.',
+      'Write on staves, hear your libraries, mix, score to picture and deliver, all in one program. For film, TV and game composers, and a new home for Finale users, with note entry that follows Finale and Sibelius. For Windows and macOS.',
     addOns: [],
     related: ['vc-writer', 'vc-film-studio', 'vc-game-studio'],
   },
