@@ -20,8 +20,8 @@ names, taglines, links, add-ons, and which products each one shows under
 shows as coming soon; fill it in when it launches.
 
 Each product's logo is a file in `src/logos/`, named by its `logo` field. The
-VC Writers Room's is a drawn stand-in: replace the file (same name, or change
-`logo`) when the real mark exists.
+VC Writers Room's full-size master is `brand/vc-writers-room-1024.png`: VC
+Writer's app icon with VC WRITERS ROOM set on the plaque in Josefin Sans.
 
 ```bash
 npm test     # builds dist/ and checks every page, link and product

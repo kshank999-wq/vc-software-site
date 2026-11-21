@@ -9,8 +9,8 @@
  * `partOfParent` is sold on its main product's site and links there.
  *
  * `logo` is a file in src/logos/, shown on the product's card. Each is the
- * product's own icon, taken from its website or its app; the Writers Room has
- * none yet, so its mark is a drawn stand-in to replace when it does.
+ * product's own icon, taken from its website or its app. The Writers Room's is
+ * VC Writer's app icon with VC WRITERS ROOM set on its plaque.
  *
  * VC Publishing (the book imprint) is VC Entertainment's too, but it is not
  * software: it has its own site and is not listed here. Neither is VC Command
@@ -61,8 +61,8 @@ export const PRODUCTS = [
         name: 'VC Writers Room',
         about:
           'Write as a team: invite your co-writers in the roles you give them, hand out tasks on the room’s board, and submit pages from VC Writer for the room to read.',
-        /** Stand-in mark: the Writers Room has no logo of its own yet. */
-        logo: 'vc-writers-room.svg',
+        /** VC Writer's mark with the room's name on the plaque (brand/vc-writers-room-1024.png). */
+        logo: 'vc-writers-room.webp',
         /** The room's door on VC Writer's site (sign in to see your rooms). */
         url: 'https://vc-writer.com/rooms',
       },
