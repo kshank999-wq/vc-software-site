@@ -9,8 +9,8 @@
  * `partOfParent` is sold on its main product's site and links there.
  *
  * `logo` is a file in src/logos/, shown on the product's card. Each is the
- * product's own icon, taken from its website; VC Film Studio and VC Smart
- * Slate have none yet, so theirs are drawn stand-ins to replace when they do.
+ * product's own icon, taken from its website or its app; the Writers Room has
+ * none yet, so its mark is a drawn stand-in to replace when it does.
  *
  * VC Publishing (the book imprint) is VC Entertainment's too, but it is not
  * software: it has its own site and is not listed here. Neither is VC Command
@@ -56,18 +56,60 @@ export const PRODUCTS = [
         /** The App Store listing, once it is live (https://apps.apple.com/app/…). */
         appStore: '',
       },
+      {
+        key: 'vc-writers-room',
+        name: 'VC Writers Room',
+        about:
+          'Write as a team: invite your co-writers in the roles you give them, hand out tasks on the room’s board, and submit pages from VC Writer for the room to read.',
+        /** Stand-in mark: the Writers Room has no logo of its own yet. */
+        logo: 'vc-writers-room.svg',
+        /** The room's door on VC Writer's site (sign in to see your rooms). */
+        url: 'https://vc-writer.com/rooms',
+      },
     ],
-    related: ['vc-film-studio', 'vc-game-studio'],
+    related: ['vc-composer', 'vc-film-studio', 'vc-game-studio'],
+  },
+  {
+    key: 'vc-composer',
+    name: 'VC Composer',
+    url: 'https://vc-composer.com',
+    logo: 'vc-composer.webp',
+    tagline: 'A notation-first scoring workstation.',
+    about:
+      'For film, TV and game composers: write on staves, hear your libraries, mix, score to picture and deliver. For Windows and macOS.',
+    addOns: [],
+    related: ['vc-writer', 'vc-film-studio', 'vc-game-studio'],
+  },
+  {
+    key: 'vc-game-studio',
+    name: 'VC Game Studio',
+    url: 'https://vc-gamestudio.com',
+    logo: 'vc-game-studio.png',
+    tagline: 'Design the whole game, then send it straight into your engine.',
+    about:
+      'Story, characters, levels, puzzles and play-testing in one design tool, with a hand-off to Godot, Unity and Unreal Engine. For Windows and macOS.',
+    addOns: [],
+    related: ['vc-writer', 'vc-composer', 'vc-film-studio'],
   },
   {
     key: 'vc-film-studio',
     name: 'VC Film Studio',
-    url: '',
-    logo: 'vc-film-studio.svg',
-    tagline: 'Run the whole production from one place.',
+    url: 'https://www.vcfilmstudio.com',
+    logo: 'vc-film-studio.webp',
+    tagline: 'Management software for small and large productions.',
     about:
-      'A production operating system for filmmakers: the creative intent of your film kept as structured, versioned data, with reports for every department and hand-offs to Unreal and DaVinci Resolve.',
+      'The script, the breakdown, the schedule, the shot list, continuity, call sheets and the accounts, in one place, following the order a production actually happens in.',
     addOns: [
+      {
+        key: 'vc-smart-slate',
+        name: 'VC Smart Slate',
+        about:
+          'The on-set digital slate and timecode hub, linking the camera and sound teams, the script supervisor, VC DIT, VC Film Studio and post-production.',
+        platform: 'iPhone and iPad',
+        logo: 'vc-smart-slate.webp',
+        /** Sold on VC Film Studio's own site, as part of it: no site of its own. */
+        partOfParent: true,
+      },
       {
         key: 'vc-dit',
         name: 'VC DIT',
@@ -87,26 +129,26 @@ export const PRODUCTS = [
         url: 'https://vc-vfx.com',
       },
       {
-        key: 'vc-smart-slate',
-        name: 'VC Smart Slate',
-        logo: 'vc-smart-slate.svg',
-        about: 'A live slate linked to the production, so every take is logged as it is shot.',
-        /** Sold on VC Film Studio's own site, as part of it: no site of its own. */
-        partOfParent: true,
+        key: 'vc-sound-design',
+        name: 'VC Sound Design',
+        logo: 'vc-sound-design.webp',
+        about:
+          'Sound for picture: spot sounds against the edited scene, build the cue chart, perform or record Foley, rough-mix, and hand off sample-aligned stems to DaVinci Resolve or a finishing studio. For Windows, macOS and Linux.',
+        /** No site yet: shows as coming soon until `url` is filled in. */
+        url: '',
+      },
+      {
+        key: 'vc-director',
+        name: 'VC Director',
+        about:
+          'The script-first app for directors and directors of photography: mark a line, note it by typing or dictating, add photos, sketches and viewfinder frames, and find it in VC Film Studio.',
+        platform: 'iPhone, iPad and Android',
+        logo: 'vc-director.webp',
+        /** The App Store listing, once it is live. */
+        appStore: '',
       },
     ],
-    related: ['vc-writer', 'vc-game-studio'],
-  },
-  {
-    key: 'vc-game-studio',
-    name: 'VC Game Studio',
-    url: 'https://vc-gamestudio.com',
-    logo: 'vc-game-studio.png',
-    tagline: 'Design the whole game, then send it straight into your engine.',
-    about:
-      'Story, characters, levels, puzzles and play-testing in one design tool, with a hand-off to Godot, Unity and Unreal Engine. For Windows and macOS.',
-    addOns: [],
-    related: ['vc-writer', 'vc-film-studio'],
+    related: ['vc-writer', 'vc-composer', 'vc-game-studio'],
   },
 ];
 

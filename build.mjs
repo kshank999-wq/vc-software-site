@@ -56,7 +56,7 @@ ${body}
 const hrefOf = (p, parent) => p.url || p.appStore || (p.partOfParent && parent ? parent.url : '') || '';
 
 /** "vc-writer.com" from "https://vc-writer.com/notes": what the card says it opens. */
-const shortUrl = (url) => url.replace(/^https:\/\//, '').replace(/\/$/, '');
+const shortUrl = (url) => url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 /**
  * A product's card. **The whole card is the link** to its site (Ken: *when
@@ -67,8 +67,8 @@ const shortUrl = (url) => url.replace(/^https:\/\//, '').replace(/\/$/, '');
 const card = (p, { parent, size }) => {
   const href = hrefOf(p, parent);
   const goes = href
-    ? `<span class="go">${p.partOfParent ? `Part of ${esc(parent.name)}` : esc(shortUrl(href))} <span aria-hidden="true">→</span></span>`
-    : `<span class="go soon">${p.partOfParent && parent ? `Coming soon with ${esc(parent.name)}` : 'Coming soon'}</span>`;
+    ? `<span class="go">${p.partOfParent ? `Part of ${esc(parent.name)}` : esc(shortUrl(href))}&nbsp;<span aria-hidden="true">→</span></span>`
+    : `<span class="go soon">${p.partOfParent && parent ? `Coming soon with ${esc(parent.name)}` : p.appStore !== undefined ? 'Coming soon to the App Store' : 'Coming soon'}</span>`;
   const inner = `<img class="logo" src="/logos/${esc(p.logo)}" alt="" width="${size === 'main' ? 160 : 72}" height="${size === 'main' ? 160 : 72}" loading="lazy">
   <div class="words">
     <h${size === 'main' ? 2 : 3}>${esc(p.name)}</h${size === 'main' ? 2 : 3}>
@@ -89,12 +89,12 @@ const line = (p) => `<section class="line" id="${p.key}" aria-label="${esc(p.nam
 
 const home = page({
   title: `VC Software: ${COMPANY.catchphrase.replace(/\.$/, '').toLowerCase()}`,
-  description: 'VC Writer, VC Film Studio and VC Game Studio: software for writers, filmmakers and game designers, from VC Entertainment.',
+  description: 'VC Writer, VC Composer, VC Game Studio and VC Film Studio: software for writers, composers, game designers and filmmakers, from VC Entertainment.',
   path: '/',
   body: `<section class="hero wrap">
   <h1>${esc(COMPANY.catchphrase)}</h1>
   <p class="strap">${esc(COMPANY.strapline)}</p>
-  <p class="lede">Write it, shoot it, play it. Each VC app is its own product, made for the people who tell stories for a living.</p>
+  <p class="lede">Write it, score it, play it, shoot it. Each VC app is its own product, made for the people who tell stories for a living.</p>
   <ul class="marks" aria-label="Products">${PRODUCTS.map((p) => `<li><a href="#${p.key}"><img src="/logos/${esc(p.logo)}" alt="" width="56" height="56"><span>${esc(p.name)}</span></a></li>`).join('')}</ul>
 </section>
 <div class="wrap lines" id="products">
@@ -108,7 +108,7 @@ ${PRODUCTS.map(line).join('\n')}
 
 const support = page({
   title: 'Support · VC Software',
-  description: 'Help with VC Writer, VC Film Studio and VC Game Studio: your account, subscription, license and installs.',
+  description: 'Help with VC Writer, VC Composer, VC Game Studio and VC Film Studio: your account, subscription, license and installs.',
   path: '/support',
   body: `<section class="wrap page">
   <h1>Support</h1>
@@ -131,7 +131,7 @@ const privacy = page({
   body: `<section class="wrap page">
   <h1>Privacy</h1>
   <p class="updated">${esc(COMPANY.legal)} · last updated ${new Date().toISOString().slice(0, 10)}</p>
-  <p>This is how the VC Software apps (VC Writer, VC Film Studio, VC Game Studio and their add-ons) and their websites handle your information.</p>
+  <p>This is how the VC Software apps (VC Writer, VC Composer, VC Game Studio, VC Film Studio and their add-ons) and their websites handle your information.</p>
   <h2>What we keep</h2>
   <ul>
     <li><strong>Your account:</strong> your email address and, if you give one, your name.</li>
