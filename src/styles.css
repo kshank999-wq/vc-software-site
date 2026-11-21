@@ -333,6 +333,88 @@ a.card:focus-visible .go {
   }
 }
 
+/* -------------------------------------------- a feature under a line */
+
+.promo {
+  margin-top: 16px;
+  padding: 36px;
+  border: 1px solid var(--gold-deep);
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+}
+
+.promo .eyebrow {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  color: var(--gold-bright);
+}
+
+.promo h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  letter-spacing: 0.1em;
+}
+
+.promo .lede {
+  margin: 0 0 24px;
+  color: var(--muted);
+  max-width: 760px;
+}
+
+.promo dl {
+  margin: 28px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px 28px;
+}
+
+.promo dt {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+.promo dd {
+  margin: 4px 0 0;
+  font-size: 15px;
+  color: var(--text);
+}
+
+/* The concept art is on white: framed in gold so it reads as a print. */
+.promo-shot {
+  margin: 0;
+}
+
+.promo-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--gold-deep);
+  border-radius: 2px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.promo-shot figcaption {
+  margin-top: 8px;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .promo {
+    padding: 24px 18px;
+  }
+}
+
 /* --------------------------------------------------------------- band */
 
 .band {

@@ -81,10 +81,27 @@ const card = (p, { parent, size }) => {
   return href ? `<a class="${cls}" href="${esc(href)}">${inner}</a>` : `<div class="${cls}">${inner}</div>`;
 };
 
-/** One product line: the product, and its add-ons beneath it. */
+/**
+ * A coming-soon feature under a line: the words, the picture full width (it
+ * is a detailed sheet, unreadable any smaller; it opens full size), and the
+ * points beneath it.
+ */
+const promo = (f) => `<div class="promo">
+  <p class="eyebrow">${esc(f.eyebrow)}</p>
+  <h3>${esc(f.title)}</h3>
+  <p class="lede">${esc(f.lede)}</p>
+  <figure class="promo-shot">
+    <a href="/promo/${esc(f.image)}"><img src="/promo/${esc(f.image)}" alt="${esc(f.alt)}" width="1536" height="1024" loading="lazy"></a>
+    <figcaption>${esc(f.caption)}</figcaption>
+  </figure>
+  <dl>${f.points.map(([term, text]) => `<div><dt>${esc(term)}</dt><dd>${esc(text)}</dd></div>`).join('')}</dl>
+</div>`;
+
+/** One product line: the product, its add-ons beneath it, and any feature. */
 const line = (p) => `<section class="line" id="${p.key}" aria-label="${esc(p.name)}">
   ${card(p, { size: 'main' })}
   ${p.addOns.length ? `<div class="addons">${p.addOns.map((a) => card(a, { parent: p, size: 'addon' })).join('\n')}</div>` : ''}
+  ${p.promo ? promo(p.promo) : ''}
 </section>`;
 
 const home = page({
@@ -183,6 +200,7 @@ for (const [name, html] of Object.entries(pages)) writeFileSync(join(out, name),
 copyFileSync(join(root, 'src/styles.css'), join(out, 'styles.css'));
 copyFileSync(join(root, 'src/favicon.svg'), join(out, 'favicon.svg'));
 cpSync(join(root, 'src/logos'), join(out, 'logos'), { recursive: true });
+cpSync(join(root, 'src/promo'), join(out, 'promo'), { recursive: true });
 for (const p of PRODUCTS) {
   const related = p.related.map(productByKey).map((r) => ({ name: r.name, tagline: r.tagline, url: r.url || null }));
   writeFileSync(join(out, 'related', `${p.key}.json`), `${JSON.stringify({ product: p.name, related }, null, 2)}\n`);

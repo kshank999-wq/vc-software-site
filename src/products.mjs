@@ -104,8 +104,8 @@ export const PRODUCTS = [
         key: 'vc-smart-slate',
         name: 'VC Smart Slate',
         about:
-          'The on-set digital slate and timecode hub, linking the camera and sound teams, the script supervisor, VC DIT, VC Film Studio and post-production.',
-        platform: 'iPhone and iPad',
+          'A purpose-built hardware slate and VC Sync Boxes that keep every camera and sound recorder in sync and feed the script supervisor, the DIT and editorial live, so notes, continuity and camera and editorial reports fill themselves in as you shoot.',
+        platform: 'Hardware · iPhone and iPad',
         logo: 'vc-smart-slate.webp',
         /** Sold on VC Film Studio's own site, as part of it: no site of its own. */
         partOfParent: true,
@@ -149,6 +149,25 @@ export const PRODUCTS = [
       },
     ],
     related: ['vc-writer', 'vc-composer', 'vc-game-studio'],
+    /**
+     * A coming-soon feature under the line: VC Smart Slate's hardware and
+     * VC Sync Boxes (Ken's product design concept, src/promo/).
+     */
+    promo: {
+      eyebrow: 'Coming soon · VC Smart Slate',
+      title: 'Every frame. Every device. In sync.',
+      lede:
+        'A connected slate and sync box system that ties VC Film Studio together on set. What used to be written by hand, chased down and typed up after wrap is filled in as you shoot, and sent live to the script supervisor, the DIT and editorial.',
+      points: [
+        ['The slate', 'Your familiar VC Smart Slate app on purpose-built hardware, with an integrated rear camera.'],
+        ['VC Sync Boxes', 'A small matching timecode companion for each camera and the sound cart, with sync and LTC in and out.'],
+        ['RF, Wi-Fi and Bluetooth', 'Every device on set in sync, and talking to the rest.'],
+        ['Automated on set', 'Notes, continuity, script supervision, camera reports and editorial reports, with live feeds to the script supervisor, the DIT and editorial.'],
+      ],
+      image: 'vc-smart-slate-concept.webp',
+      alt: 'VC Smart Slate hardware: the slate showing slate, roll, scene and take with running timecode, its back with the integrated rear camera, and two VC Sync Boxes with timecode displays, sync out, LTC in/out and USB power.',
+      caption: 'Product design concept.',
+    },
   },
 ];
 
