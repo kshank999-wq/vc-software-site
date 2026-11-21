@@ -41,9 +41,9 @@ export const PRODUCTS = [
     name: 'VC Writer',
     url: 'https://vc-writer.com',
     logo: 'vc-writer.webp',
-    tagline: 'Write screenplays and novels in one place.',
+    tagline: 'Write anything, in one place.',
     about:
-      'Story development, research, outlining, drafting, editing and read-back for screenwriters and novelists. For Windows 10/11 and macOS.',
+      'Screenplays, series and episodics, novels, short story collections, and institutional and instructional books, with a word processor that works with all of it. Research, outline, draft, edit and hear it read back. For Windows 10/11 and macOS.',
     addOns: [
       {
         key: 'vc-writer-notes',
