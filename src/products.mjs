@@ -43,7 +43,7 @@ export const PRODUCTS = [
     logo: 'vc-writer.webp',
     tagline: 'Write anything, in one place.',
     about:
-      'Screenplays, series and episodics, novels, short story collections, and institutional and instructional books, with a word processor that works with all of it. Research, outline, draft, edit and hear it read back. For Windows 10/11 and macOS.',
+      'Everything you need to write, without patching together a word processor, spreadsheets, an outliner and a screenwriting program. Screenplays, series and episodics, novels, short story collections, and institutional and instructional books, with a word processor that works with all of it. For Windows 10/11 and macOS.',
     addOns: [
       {
         key: 'vc-writer-notes',
