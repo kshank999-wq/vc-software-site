@@ -41,6 +41,11 @@ for (const name of pages) {
 const home = readFileSync(join(dist, 'index.html'), 'utf8');
 for (const p of PRODUCTS) {
   if (!p.name || !p.tagline || !p.about) fail(`${p.key}: name, tagline and about are all needed`);
+  for (const one of [p, ...p.addOns]) {
+    if (!one.logo) fail(`${one.key}: no logo`);
+    else if (!existsSync(join(dist, 'logos', one.logo))) fail(`${one.key}: logo ${one.logo} is missing`);
+    else if (!home.includes(`/logos/${one.logo}`)) fail(`the home page should show ${one.name}'s logo`);
+  }
   if (!home.includes(p.name)) fail(`the home page should list ${p.name}`);
   if (p.url && !home.includes(`href="${p.url}"`)) fail(`the home page should link ${p.name} to ${p.url}`);
   for (const a of p.addOns) if (!home.includes(a.name)) fail(`the home page should list ${p.name}'s add-on ${a.name}`);

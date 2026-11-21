@@ -6,7 +6,7 @@
  * Also writes dist/related/<product>.json: what each product's own site shows
  * under "More from VC Software".
  */
-import { copyFileSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { copyFileSync, cpSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { COMPANY, PRODUCTS, productByKey } from './src/products.mjs';
@@ -32,12 +32,12 @@ const page = ({ title, description, path, body }) => `<!doctype html>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&display=swap">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <a class="brand" href="/">VC <span>Software</span></a>
+  <a class="brand" href="/">VC Software</a>
   <nav class="site"><a href="/#products">Products</a><a href="/support">Support</a></nav>
 </div></header>
 <main>
@@ -52,30 +52,40 @@ ${body}
 </html>
 `;
 
-const link = (url, label, cls = '') => (url ? `<a${cls ? ` class="${cls}"` : ''} href="${esc(url)}">${esc(label)}</a>` : '<span class="soon">Coming soon</span>');
+/** Where a product's card goes: its site, its App Store page, or its parent's site. */
+const hrefOf = (p, parent) => p.url || p.appStore || (p.partOfParent && parent ? parent.url : '') || '';
 
-const addOn = (parent) => (a) => {
-  const where = a.partOfParent
-    ? parent.url
-      ? `<a href="${esc(parent.url)}">Part of ${esc(parent.name)}</a>`
-      : `<span class="soon">Coming soon with ${esc(parent.name)}</span>`
-    : a.appStore !== undefined
-    ? a.appStore
-      ? `<a href="${esc(a.appStore)}">On the App Store</a>`
-      : `<span class="soon">Coming soon to the App Store</span>`
-    : a.url
-      ? `<a href="${esc(a.url)}">Learn more</a>`
-      : '<span class="soon">Coming soon</span>';
-  return `<p class="addon"><strong>${esc(a.name)}${a.platform ? ` · ${esc(a.platform)}` : ''}</strong><span>${esc(a.about)}</span><br>${where}</p>`;
+/** "vc-writer.com" from "https://vc-writer.com/notes": what the card says it opens. */
+const shortUrl = (url) => url.replace(/^https:\/\//, '').replace(/\/$/, '');
+
+/**
+ * A product's card. **The whole card is the link** to its site (Ken: *when
+ * you select each product and its small promotional blurb, it'll take you to
+ * the website*). A product with nowhere to go yet is the same card, not a
+ * link, marked coming soon.
+ */
+const card = (p, { parent, size }) => {
+  const href = hrefOf(p, parent);
+  const goes = href
+    ? `<span class="go">${p.partOfParent ? `Part of ${esc(parent.name)}` : esc(shortUrl(href))} <span aria-hidden="true">→</span></span>`
+    : `<span class="go soon">${p.partOfParent && parent ? `Coming soon with ${esc(parent.name)}` : 'Coming soon'}</span>`;
+  const inner = `<img class="logo" src="/logos/${esc(p.logo)}" alt="" width="${size === 'main' ? 160 : 72}" height="${size === 'main' ? 160 : 72}" loading="lazy">
+  <div class="words">
+    <h${size === 'main' ? 2 : 3}>${esc(p.name)}</h${size === 'main' ? 2 : 3}>
+    ${p.platform ? `<p class="platform">${esc(p.platform)}</p>` : ''}
+    ${p.tagline ? `<p class="tagline">${esc(p.tagline)}</p>` : ''}
+    <p class="about">${esc(p.about)}</p>
+    ${goes}
+  </div>`;
+  const cls = `card ${size}${href ? '' : ' is-soon'}`;
+  return href ? `<a class="${cls}" href="${esc(href)}">${inner}</a>` : `<div class="${cls}">${inner}</div>`;
 };
 
-const card = (p) => `<article class="line" id="${p.key}">
-  <h2>${esc(p.name)}</h2>
-  <p class="tagline">${esc(p.tagline)}</p>
-  <p class="about">${esc(p.about)}</p>
-  ${p.addOns.length ? `<div class="addons"><h3>Add-ons</h3>${p.addOns.map(addOn(p)).join('')}</div>` : ''}
-  <div class="cta">${link(p.url, `Visit ${p.name}`, 'button')}</div>
-</article>`;
+/** One product line: the product, and its add-ons beneath it. */
+const line = (p) => `<section class="line" id="${p.key}" aria-label="${esc(p.name)}">
+  ${card(p, { size: 'main' })}
+  ${p.addOns.length ? `<div class="addons">${p.addOns.map((a) => card(a, { parent: p, size: 'addon' })).join('\n')}</div>` : ''}
+</section>`;
 
 const home = page({
   title: `VC Software: ${COMPANY.catchphrase.replace(/\.$/, '').toLowerCase()}`,
@@ -85,10 +95,11 @@ const home = page({
   <h1>${esc(COMPANY.catchphrase)}</h1>
   <p class="strap">${esc(COMPANY.strapline)}</p>
   <p class="lede">Write it, shoot it, play it. Each VC app is its own product, made for the people who tell stories for a living.</p>
+  <ul class="marks" aria-label="Products">${PRODUCTS.map((p) => `<li><a href="#${p.key}"><img src="/logos/${esc(p.logo)}" alt="" width="56" height="56"><span>${esc(p.name)}</span></a></li>`).join('')}</ul>
 </section>
-<section class="wrap lines" id="products" aria-label="Products">
-${PRODUCTS.map(card).join('\n')}
-</section>
+<div class="wrap lines" id="products">
+${PRODUCTS.map(line).join('\n')}
+</div>
 <section class="band"><div class="wrap">
   <h2>One account for every VC app</h2>
   <p>Sign in to any VC app with the same account. Each app is its own subscription: you only pay for the ones you use.</p>
@@ -171,6 +182,7 @@ const pages = { 'index.html': home, 'support.html': support, 'privacy.html': pri
 for (const [name, html] of Object.entries(pages)) writeFileSync(join(out, name), html);
 copyFileSync(join(root, 'src/styles.css'), join(out, 'styles.css'));
 copyFileSync(join(root, 'src/favicon.svg'), join(out, 'favicon.svg'));
+cpSync(join(root, 'src/logos'), join(out, 'logos'), { recursive: true });
 for (const p of PRODUCTS) {
   const related = p.related.map(productByKey).map((r) => ({ name: r.name, tagline: r.tagline, url: r.url || null }));
   writeFileSync(join(out, 'related', `${p.key}.json`), `${JSON.stringify({ product: p.name, related }, null, 2)}\n`);

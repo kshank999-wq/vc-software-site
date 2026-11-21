@@ -8,6 +8,10 @@
  * as coming soon. Fill it in and rebuild when it launches. An add-on with
  * `partOfParent` is sold on its main product's site and links there.
  *
+ * `logo` is a file in src/logos/, shown on the product's card. Each is the
+ * product's own icon, taken from its website; VC Film Studio and VC Smart
+ * Slate have none yet, so theirs are drawn stand-ins to replace when they do.
+ *
  * VC Publishing (the book imprint) is VC Entertainment's too, but it is not
  * software: it has its own site and is not listed here. Neither is VC Command
  * Center: it is the company's in-house dashboard across every site and line
@@ -36,6 +40,7 @@ export const PRODUCTS = [
     key: 'vc-writer',
     name: 'VC Writer',
     url: 'https://vc-writer.com',
+    logo: 'vc-writer.webp',
     tagline: 'Write screenplays and novels in one place.',
     about:
       'Story development, research, outlining, drafting, editing and read-back for screenwriters and novelists. For Windows 10/11 and macOS.',
@@ -45,6 +50,9 @@ export const PRODUCTS = [
         name: 'VC Writer Notes',
         about: 'The iPhone companion: catch an idea the moment it comes, by typing or by voice, and find it waiting in VC Writer.',
         platform: 'iPhone',
+        logo: 'vc-writer-notes.png',
+        /** Its page on VC Writer's site, until the App Store listing is live. */
+        url: 'https://vc-writer.com/notes',
         /** The App Store listing, once it is live (https://apps.apple.com/app/…). */
         appStore: '',
       },
@@ -55,6 +63,7 @@ export const PRODUCTS = [
     key: 'vc-film-studio',
     name: 'VC Film Studio',
     url: '',
+    logo: 'vc-film-studio.svg',
     tagline: 'Run the whole production from one place.',
     about:
       'A production operating system for filmmakers: the creative intent of your film kept as structured, versioned data, with reports for every department and hand-offs to Unreal and DaVinci Resolve.',
@@ -62,6 +71,7 @@ export const PRODUCTS = [
       {
         key: 'vc-dit',
         name: 'VC DIT',
+        logo: 'vc-dit.png',
         about:
           'On-set workflow for DITs: checksum-verified ingest, sync, dailies and looks, VFX mirroring and delivery to every destination. For Mac and Windows.',
         /** Its own website. */
@@ -70,6 +80,7 @@ export const PRODUCTS = [
       {
         key: 'vc-vfx',
         name: 'VC VFX',
+        logo: 'vc-vfx.svg',
         about:
           'From the DIT hand-off to the VFX house: a shot queue, a printable prep list, verified image-sequence plates and documented shot packages for your artist. Works with VC Film Studio or on its own. For Windows and macOS.',
         /** Its own website: sold on its own as well as part of VC Film Studio. */
@@ -78,6 +89,7 @@ export const PRODUCTS = [
       {
         key: 'vc-smart-slate',
         name: 'VC Smart Slate',
+        logo: 'vc-smart-slate.svg',
         about: 'A live slate linked to the production, so every take is logged as it is shot.',
         /** Sold on VC Film Studio's own site, as part of it: no site of its own. */
         partOfParent: true,
@@ -89,6 +101,7 @@ export const PRODUCTS = [
     key: 'vc-game-studio',
     name: 'VC Game Studio',
     url: 'https://vc-gamestudio.com',
+    logo: 'vc-game-studio.png',
     tagline: 'Design the whole game, then send it straight into your engine.',
     about:
       'Story, characters, levels, puzzles and play-testing in one design tool, with a hand-off to Godot, Unity and Unreal Engine. For Windows and macOS.',

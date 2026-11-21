@@ -19,6 +19,10 @@ names, taglines, links, add-ons, and which products each one shows under
 "More from VC Software". Leave a `url` (or `appStore`) empty and the product
 shows as coming soon; fill it in when it launches.
 
+Each product's logo is a file in `src/logos/`, named by its `logo` field. VC
+Film Studio's and VC Smart Slate's are drawn stand-ins: replace the file (same
+name, or change `logo`) when the real mark exists.
+
 ```bash
 npm test     # builds dist/ and checks every page, link and product
 ```
