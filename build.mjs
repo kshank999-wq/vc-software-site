@@ -20,13 +20,13 @@ const year = new Date().getFullYear();
 /**
  * Every link that leads away from the home page opens in a new tab (Ken: *the
  * VC Software website stays, and it opens a new page*): the product sites,
- * the App Store, Support, Privacy, Terms, the full-size pictures, and the
- * product icons at the top (a new tab at that product). Links back to the
- * home page and email links stay as they are.
+ * the App Store, Support, Privacy, Terms and the full-size pictures. Links
+ * back to the home page, jumps within a page (a product icon whose product
+ * has no site yet jumps to its card) and email links stay as they are.
  */
 const newTabs = (html) =>
   html.replace(/<a (class="[^"]*" )?href="([^"]+)"/g, (whole, cls, href) =>
-    href === '/' || href.startsWith('/#') || href.startsWith('mailto:')
+    href === '/' || href.startsWith('/#') || href.startsWith('#') || href.startsWith('mailto:')
       ? whole
       : `${whole} target="_blank" rel="noopener"`);
 
@@ -125,7 +125,7 @@ const home = page({
   <h1>${esc(COMPANY.catchphrase)}</h1>
   <p class="strap">${esc(COMPANY.strapline)}</p>
   <p class="lede">Write it, score it, master it, play it, shoot it. Each VC app is its own product, made for the people who tell stories for a living.</p>
-  <ul class="marks" aria-label="Products">${PRODUCTS.map((p) => `<li><a href="#${p.key}"><img src="/logos/${esc(p.logo)}" alt="" width="56" height="56"><span>${esc(p.name)}</span></a></li>`).join('')}</ul>
+  <ul class="marks" aria-label="Products">${PRODUCTS.map((p) => `<li><a href="${esc(hrefOf(p) || `#${p.key}`)}"><img src="/logos/${esc(p.logo)}" alt="" width="56" height="56"><span>${esc(p.name)}</span></a></li>`).join('')}</ul>
 </section>
 <div class="wrap lines" id="products">
 ${PRODUCTS.map(line).join('\n')}
