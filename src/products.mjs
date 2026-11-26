@@ -78,7 +78,20 @@ export const PRODUCTS = [
     about:
       'Write on staves, hear your libraries, mix, score to picture and deliver, all in one program. For film, TV and game composers, and a new home for Finale users, with note entry that follows Finale and Sibelius. For Windows and macOS.',
     addOns: [],
-    related: ['vc-writer', 'vc-film-studio', 'vc-game-studio'],
+    related: ['vc-writer', 'vc-mastering', 'vc-film-studio', 'vc-game-studio'],
+  },
+  {
+    key: 'vc-mastering',
+    name: 'VC Mastering',
+    /** No site yet: shows as coming soon until `url` is filled in. */
+    url: '',
+    /** A placeholder mark (a waveform in VC gold) until the product has its own. */
+    logo: 'vc-mastering.svg',
+    tagline: 'Your song, mastered while you watch.',
+    about:
+      'An AI mastering suite. Upload your song, pick a reference or upload your own, and watch it go through every stage of mastering. Then talk to your AI mastering engineer, ask for the tweaks you want, and hear them in your master.',
+    addOns: [],
+    related: ['vc-composer', 'vc-film-studio', 'vc-game-studio'],
   },
   {
     key: 'vc-game-studio',

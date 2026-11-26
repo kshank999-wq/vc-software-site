@@ -25,6 +25,11 @@ for (const name of pages) {
   const html = readFileSync(file, 'utf8');
   if (!/<title>[^<]+<\/title>/.test(html)) fail(`${name}: no title`);
   if (!/name="description" content="[^"]+"/.test(html)) fail(`${name}: no description`);
+  for (const [tag, href] of html.matchAll(/<a [^>]*href="([^"]+)"[^>]*>/g)) {
+    const stays = href === '/' || href.startsWith('/#') || href.startsWith('#') || href.startsWith('mailto:');
+    if (!stays && !tag.includes('target="_blank" rel="noopener"')) fail(`${name}: ${href} should open in a new tab`);
+    if (stays && tag.includes('target=')) fail(`${name}: ${href} should stay in the same tab`);
+  }
   for (const [, href] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     if (href.startsWith('mailto:') || href.startsWith('#')) continue;
     if (/^https?:/.test(href)) {
