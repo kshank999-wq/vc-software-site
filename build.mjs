@@ -20,12 +20,13 @@ const year = new Date().getFullYear();
 /**
  * Every link that leads away from the home page opens in a new tab (Ken: *the
  * VC Software website stays, and it opens a new page*): the product sites,
- * the App Store, Support, Privacy, Terms and the full-size pictures. Links
- * back to the home page, jumps within a page and email links stay as they are.
+ * the App Store, Support, Privacy, Terms, the full-size pictures, and the
+ * product icons at the top (a new tab at that product). Links back to the
+ * home page and email links stay as they are.
  */
 const newTabs = (html) =>
   html.replace(/<a (class="[^"]*" )?href="([^"]+)"/g, (whole, cls, href) =>
-    href === '/' || href.startsWith('/#') || href.startsWith('#') || href.startsWith('mailto:')
+    href === '/' || href.startsWith('/#') || href.startsWith('mailto:')
       ? whole
       : `${whole} target="_blank" rel="noopener"`);
 
