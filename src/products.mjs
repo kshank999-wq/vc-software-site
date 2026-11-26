@@ -83,8 +83,7 @@ export const PRODUCTS = [
   {
     key: 'vc-mastering',
     name: 'VC Mastering',
-    /** No site yet: shows as coming soon until `url` is filled in. */
-    url: '',
+    url: 'https://vc-mastering.com',
     /** A placeholder mark (a waveform in VC gold) until the product has its own. */
     logo: 'vc-mastering.svg',
     tagline: 'Your song, mastered while you watch.',
